@@ -1,105 +1,188 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PolicyModal from './PolicyModal';
+
+const SOCIAL_LINKS = [
+  {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/xntrova/',
+    bg: '#1877F2',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+      </svg>
+    )
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/xntrova.agency/',
+    bg: 'linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7)',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+      </svg>
+    )
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/company/xntrova/',
+    bg: '#0A66C2',
+    icon: (
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+      </svg>
+    )
+  },
+  {
+    name: 'X',
+    url: 'https://x.com/xntrova',
+    bg: '#000000',
+    icon: (
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    )
+  }
+];
+
+const POLICIES_LIST = [
+  { id: 'privacy', title: 'Privacy Policy' },
+  { id: 'terms', title: 'Terms & Conditions' },
+  { id: 'cookie', title: 'Cookie Policy' },
+  { id: 'disclaimer', title: 'Disclaimer' },
+  { id: 'refund', title: 'Refund & Cancellation Policy' },
+  { id: 'copyright', title: 'Copyright Policy' }
+];
 
 export default function Footer({ meta }) {
+  const [activePolicy, setActivePolicy] = useState(null);
+
+  const phone = meta?.phone || '+91 868-382-8646';
+  const cleanPhone = phone.replace(/[^0-9+]/g, '');
+  const email = meta?.email || 'info@xntrova.com';
+  const address = 'A107, 2nd Floor, Sector 8, Dwarka New Delhi - 110077';
+
   return (
-    <footer id="contact" className="site-footer" role="contentinfo">
-      <div className="container">
-        <div className="footer-columns-grid">
-          {/* Col 1: Brand & Contact */}
-          <div>
-            <div className="footer-brand-logo">
-              <img src="/assets/images/logo.png" alt="Xntrova Technologies" width="140" height="34" />
-            </div>
-            <p className="footer-brand-desc">
-              {meta?.description ||
-                'Grow your business with Xntrova – the Best Digital Marketing Company in Delhi NCR offering expert Digital Marketing Services.'}
-            </p>
-
-            <div className="footer-contact-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>{meta?.address || 'A107, 2nd Floor, Sector 8, Dwarka, New Delhi - 110077'}</span>
+    <>
+      <footer id="contact" className="site-footer" role="contentinfo">
+        <div className="container">
+          {/* 3-Column Main Grid */}
+          <div className="footer-columns-grid">
+            {/* Col 1: Brand Logo & Mission */}
+            <div className="footer-col-brand">
+              <a href="/" className="footer-brand-logo-link" aria-label="Xntrova Home">
+                <img
+                  src="/xntrova-logo-3d.png"
+                  alt="Xntrova Technologies"
+                  className="footer-brand-img"
+                />
+              </a>
+              <p className="footer-brand-desc">
+                India's premier B2B digital marketing agency, delivering growth-focused solutions for businesses across Delhi and beyond.
+              </p>
             </div>
 
-            <div className="footer-contact-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <span>{meta?.phone || '+91 868-382-8646'}</span>
+            {/* Col 2: Services List (Matching User Request Screenshot) */}
+            <div className="footer-col-services">
+              <h4 className="footer-title">SERVICES</h4>
+              <ul className="footer-links-list">
+                {[
+                  'SEO (Search Engine Optimisation)',
+                  'PPC (Pay-Per-Click)',
+                  'Social Media Marketing',
+                  'E-Commerce Marketing',
+                  'Content Marketing',
+                  'Web Development',
+                  'Email Marketing',
+                ].map((sName) => (
+                  <li key={sName}>
+                    <a
+                      href="#services"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const el = document.getElementById('services');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="footer-link"
+                    >
+                      {sName}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="footer-contact-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span>{meta?.email || 'info@xntrova.com'}</span>
-            </div>
+            {/* Col 3: GET IN TOUCH (Right side, with contact info & social icons) */}
+            <div className="footer-col-touch">
+              <h4 className="footer-title">GET IN TOUCH</h4>
+              <div className="footer-touch-content">
+                <p className="footer-touch-addr">
+                  <span>A107, 2nd Floor, Sector 8,</span>
+                  <br />
+                  <span className="footer-touch-line2">Dwarka, New Delhi - 110077</span>
+                </p>
 
-            <div className="footer-partner-badges">
-              <span className="partner-tag">Google Partner</span>
-              <span className="partner-tag">Meta Certified</span>
-              <span className="partner-tag">Clutch 4.9★</span>
+                <p className="footer-touch-item">
+                  <a href={`tel:${cleanPhone}`} className="footer-touch-link">
+                    {phone}
+                  </a>
+                </p>
+
+                <p className="footer-touch-item">
+                  <a href={`mailto:${email}`} className="footer-touch-link">
+                    {email}
+                  </a>
+                </p>
+
+                {/* 4 Circular Social Icon Buttons on Right Side */}
+                <div className="footer-social-icons-row" aria-label="Social media channels">
+                  {SOCIAL_LINKS.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Follow Xntrova on ${item.name}`}
+                      className="footer-social-pill"
+                      style={{ background: item.bg }}
+                    >
+                      {item.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Col 2: Core Services */}
-          <div>
-            <h4 className="footer-title">CORE SERVICES</h4>
-            <ul className="footer-links-list">
-              <li><a href="#services" className="footer-link">SEO (Search Engine Optimisation)</a></li>
-              <li><a href="#services" className="footer-link">PPC & Paid Social Media</a></li>
-              <li><a href="#services" className="footer-link">Website Development Services</a></li>
-              <li><a href="#services" className="footer-link">Conversion Rate Optimization</a></li>
-              <li><a href="#services" className="footer-link">Social Media Marketing</a></li>
-              <li><a href="#services" className="footer-link">Content Marketing & PR</a></li>
-            </ul>
-          </div>
-
-          {/* Col 3: Company */}
-          <div>
-            <h4 className="footer-title">COMPANY</h4>
-            <ul className="footer-links-list">
-              <li><a href="#about" className="footer-link">About Us</a></li>
-              <li><a href="#engine" className="footer-link">The Growth Engine</a></li>
-              <li><a href="#metrics" className="footer-link">Case Studies & Outcomes</a></li>
-              <li><a href="#audit-form" className="footer-link">Request Free Audit</a></li>
-              <li><a href="#home" className="footer-link">Verified Reviews</a></li>
-              <li><a href="#contact" className="footer-link">Contact & Location</a></li>
-            </ul>
-          </div>
-
-          {/* Col 4: Verified Ratings */}
-          <div>
-            <h4 className="footer-title">VERIFIED RATINGS</h4>
-            <div className="rating-box">
-              <div className="rating-stars">★★★★★</div>
-              <div className="rating-score">4.9/5.0 Overall Rating</div>
-              <div className="rating-caption">500+ Verified Business Reviews on Clutch & Google</div>
+        {/* Bottom Bar: Copyright & 6 Interactive Policy Links */}
+        <div className="footer-bottom-dark-bar">
+          <div className="container footer-bottom-inner">
+            <div className="footer-copyright-text">
+              &copy; {new Date().getFullYear()} Xntrova. All rights reserved.
             </div>
 
-            <div style={{ fontSize: '0.75rem', color: '#64748b', lineHeight: 1.5 }}>
-              <strong style={{ color: '#cbd5e1' }}>SLA Performance Guarantee:</strong> <br />
-              All campaigns engineered with full-funnel attribution and guaranteed sprint turnaround standards.
+            <div className="footer-policies-nav" aria-label="Legal policies">
+              {POLICIES_LIST.map((policy) => (
+                <button
+                  key={policy.id}
+                  type="button"
+                  className="footer-policy-modal-btn"
+                  onClick={() => setActivePolicy(policy.id)}
+                >
+                  {policy.title}
+                </button>
+              ))}
             </div>
           </div>
         </div>
+      </footer>
 
-        {/* Bottom Bar */}
-        <div className="footer-bottom-bar">
-          <div>
-            &copy; {new Date().getFullYear()} Xntrova Technologies Pvt. Ltd. All rights reserved. Sector 8, Dwarka, New Delhi.
-          </div>
-          <div className="footer-legal-links">
-            <a href="#privacy" className="footer-legal-link">Privacy Policy</a>
-            <a href="#terms" className="footer-legal-link">Terms of Service</a>
-            <a href="#security" className="footer-legal-link">Security</a>
-            <a href="#sitemap" className="footer-legal-link">Sitemap</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+      {/* Interactive Policy Popup Modal */}
+      <PolicyModal
+        isOpen={Boolean(activePolicy)}
+        onClose={() => setActivePolicy(null)}
+        policyId={activePolicy || 'privacy'}
+      />
+    </>
   );
 }

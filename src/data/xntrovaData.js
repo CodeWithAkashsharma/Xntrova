@@ -32,32 +32,50 @@ export const xntrovaData = {
     {
       "id": "seo",
       "title": "Search Engine Optimization (SEO)",
+      "badge": "Organic Growth",
+      "metric": "+250% Organic Lift",
+      "imageUrl": "https://res.cloudinary.com/di93stsbz/image/upload/f_auto,q_auto,c_limit,w_600/v1787209757/xntrova-wp-media/xntrova-wp-media/Rectangle-4486-9-5504a7125cea09c8.png",
       "description": "Achieve higher visibility and long-term organic growth. Our SEO services in Delhi integrate keyword optimization, on-page and off-page factors, and technical improvements that drive traffic, enhance ranking, and strengthen your brand authority."
     },
     {
       "id": "ppc",
-      "title": "Pay-Per-Click (PPC) Advertising",
-      "description": "Drive instant targeted traffic and maximize return on ad spend (ROAS) across Google Ads, Meta Ads, and LinkedIn with precision audience targeting and high-converting ad copy."
+      "title": "Paid Advertising (PPC)",
+      "badge": "Targeted Paid Media",
+      "metric": "4.8x Target ROAS",
+      "imageUrl": "https://res.cloudinary.com/di93stsbz/image/upload/f_auto,q_auto,c_limit,w_384/v1787209759/xntrova-wp-media/xntrova-wp-media/Rectangle-4486-10-6264d1c8ec9d3fac.png",
+      "description": "Accelerate results with targeted advertising across Google, Meta, and other leading platforms. We craft high-performance PPC campaigns that deliver measurable returns by reaching the right audience, at the right time, with the right message."
     },
     {
-      "id": "web-dev",
-      "title": "Website Development Services",
-      "description": "Custom, fast-loading, and responsive web platforms built with modern technology that turn visitors into loyal customers."
+      "id": "smo",
+      "title": "Social Media Optimization (SMO)",
+      "badge": "Community & Brand",
+      "metric": "Top 1% Engagement Tier",
+      "imageUrl": "https://res.cloudinary.com/di93stsbz/image/upload/f_auto,q_auto,c_limit,w_384/v1787209740/xntrova-wp-media/xntrova-wp-media/Rectangle-4486-4-715a3dab082f4239.png",
+      "description": "Optimize your social media presence with our digital marketing company in Delhi. We elevate your social media impact through creative storytelling, influencer collaborations, and analytics-driven strategies, thus building relationships, engagement, and community growth."
     },
     {
-      "id": "social-media",
-      "title": "Social Media Marketing",
-      "description": "Engage and grow your community with tailored social campaigns, impactful creatives, and viral short-form content."
+      "id": "ecommerce",
+      "title": "E-Commerce Marketing",
+      "badge": "Sales Velocity",
+      "metric": "+45% Conversion Lift",
+      "imageUrl": "https://res.cloudinary.com/di93stsbz/image/upload/f_auto,q_auto,c_limit,w_384/v1787209735/xntrova-wp-media/xntrova-wp-media/Rectangle-4486-2-7ff366e812bb60d4.png",
+      "description": "Boost your online sales with tailored e-commerce marketing strategies. From product optimization and PPC campaigns to remarketing and conversion rate improvement, our digital marketing agency in Delhi helps turn visitors into loyal customers through data-driven performance tactics."
     },
     {
       "id": "content-marketing",
       "title": "Content Marketing",
-      "description": "Build brand credibility and customer loyalty with compelling storytelling, thought leadership articles, and high-value collateral."
+      "badge": "Brand Authority",
+      "metric": "10x Reach Multiplier",
+      "imageUrl": "https://res.cloudinary.com/di93stsbz/image/upload/f_auto,q_auto,c_limit,w_384/v1787209741/xntrova-wp-media/xntrova-wp-media/Rectangle-4486-5-19f726b3c1690da8.png",
+      "description": "Build your brand authority with Xntrova's content marketing services. Our team delivers blogs, articles, infographics, and storytelling campaigns that align with your brand voice and strengthen your digital footprint while improving SEO performance."
     },
     {
-      "id": "performance-marketing",
-      "title": "Performance Marketing",
-      "description": "Data-driven, full-funnel marketing strategies designed to scale revenue, optimize CAC, and drive measurable ROI."
+      "id": "web-dev",
+      "title": "Website Development",
+      "badge": "Modern Engineering",
+      "metric": "Sub-1.8s Core Web Vitals",
+      "imageUrl": "https://res.cloudinary.com/di93stsbz/image/upload/f_auto,q_auto,c_limit,w_384/v1787209762/xntrova-wp-media/xntrova-wp-media/Rectangle-4486-11-c13ae712a8c5d68f.png",
+      "description": "Create a robust digital presence with responsive, SEO-ready websites that deliver performance and aesthetics. Our website design company in Delhi creates sites that are fast, functional, and aligned perfectly with your goals, thus ensuring seamless user experiences."
     }
   ],
   "about": {

@@ -1,16 +1,47 @@
-# React + Vite
+# Xntrova Technologies Web Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Modern, high-performance website for Xntrova Technologies built with React 19, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Install Dependencies
+```bash
+npm install
+```
 
-## React Compiler
+### Run Locally (Dev Server)
+```bash
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Build for Production
+```bash
+npm run build
+```
 
-## Expanding the Oxlint configuration
+## 🔥 Deploying to Firebase Hosting
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+This project is configured and ready for Firebase Hosting.
+
+### 1. Authenticate with Firebase
+```bash
+firebase login
+```
+
+### 2. Set your Firebase Project ID
+Link your Firebase project:
+```bash
+firebase use --add
+```
+*(Or edit `.firebaserc` directly with your Firebase project ID)*
+
+### 3. Deploy
+Build and deploy in a single command:
+```bash
+npm run deploy
+```
+or manually:
+```bash
+npm run build
+firebase deploy --only hosting
+```
