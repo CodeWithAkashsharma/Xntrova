@@ -1,47 +1,38 @@
 # Xntrova Technologies Web Platform
 
-Modern, high-performance website for Xntrova Technologies built with React 19, Vite, and Tailwind CSS.
+Modern, responsive web platform built for Xntrova Technologies.
 
-## 🚀 Getting Started
+## 🛠️ Tech Stack
 
-### Install Dependencies
+- **Frontend:** React 19, Vite
+- **Styling & Animation:** Tailwind CSS v4, Motion (Framer Motion)
+- **Icons:** Lucide React
+- **Hosting:** Firebase Hosting
+
+## ✨ Features
+
+- **Responsive Design:** Mobile-first layout optimized for all screens.
+- **Interactive UI:** Smooth transitions, animated metrics, and step-by-step workflow sections.
+- **Enterprise Sections:** Services catalog, dynamic ticker, contact form, and legal modals.
+
+## 🚀 Quick Start
+
+### 1. Setup Environment
 ```bash
+cp .env.example .env
 npm install
 ```
 
-### Run Locally (Dev Server)
+### 2. Run Locally
 ```bash
 npm run dev
 ```
 
-### Build for Production
+### 3. Build & Deploy
 ```bash
+# Build for production
 npm run build
-```
 
-## 🔥 Deploying to Firebase Hosting
-
-This project is configured and ready for Firebase Hosting.
-
-### 1. Authenticate with Firebase
-```bash
-firebase login
-```
-
-### 2. Set your Firebase Project ID
-Link your Firebase project:
-```bash
-firebase use --add
-```
-*(Or edit `.firebaserc` directly with your Firebase project ID)*
-
-### 3. Deploy
-Build and deploy in a single command:
-```bash
+# Deploy to Firebase Hosting
 npm run deploy
-```
-or manually:
-```bash
-npm run build
-firebase deploy --only hosting
 ```
